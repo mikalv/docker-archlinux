@@ -4,7 +4,7 @@ set -e
 cd $(dirname "${BASH_SOURCE[0]}")
 today=$(date +"%Y%m%d")
 git filter-branch -f --tree-filter 'rm -f output/arch_rootfs*' --prune-empty master
-docker run --privileged -t -i -v $(pwd)/output:/output -v $(pwd)/script:/opt/mkimage jprjr/arch /opt/mkimage/mkimage-arch.sh $today
+docker run --privileged -t -i -v $(pwd)/output:/output -v $(pwd)/script:/opt/mkimage meeh/arch /opt/mkimage/mkimage-arch.sh $today
 
 # If the above command completed then we're good to update the dockerfile
 # and push to git
